@@ -1,0 +1,35 @@
+body {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    border: 1px black solid;
+    height: 700px;
+    width: 700px;
+}
+
+
+td {
+    border: 1px black solid;
+}
+
+
+.button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65%;
+    height: 100%; width: 100%; object-fit: contain;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 20px;
+    cursor: pointer;
+}

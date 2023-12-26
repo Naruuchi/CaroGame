@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='/css/main.css')}}">
+<title>Caro Game</title>
+{% endblock %}
+
+{% block body %}
+
+<body>
+
+    <h1>Caro Game by Team 10</h1>
+    <div>
+        <h4>Chơi ngay</h4>
+        <p>Lựa chọn bàn cờ</p>
+        <a class="button" href="/size/{{3}}">3x3</a>
+        <a class="button" href="/size/{{4}}">5x5</a>
+        <a class="button" href="/size/{{5}}">7x7</a>
+    </div>
+    <div>
+        <p>
+
+        </p>
+    </div>
+</body>
+{% endblock %}

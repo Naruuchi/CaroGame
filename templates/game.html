@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>CARO GAME</title>
+<link rel="stylesheet" href="{{url_for('static', filename='/css/game.css')}}">
+<script>
+    function resize() {
+
+        let size = "{{size}}"
+        const x = "{{x}}"
+        console.log(size)
+        let square = 700 / size
+        let td = document.getElementsByTagName('td')
+
+        for (let i = 0; i < td.length; i++) {
+            td[i].style.width = square + "px"
+            td[i].style.height = square + "px"
+        }
+    }
+
+    function choose(event)
+    {
+        const atag = event.target;
+        console.log(atag)
+        console.log(1)
+        
+    }
+</script>
+{% endblock %}
+
+{% block body %}
+
+<body onload="resize();">
+    <h1>CARO Game With AI</h1>
+    <table class="center">
+        {% for i in range(0,size) %}
+        <tr>
+            {% for j in range(0,size) %}
+            <td>
+                <a onlick="choose(this)" class="button" style="background-image: url({{x}});"  href="draw/{{i}}{{j}}"></a>
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+{% endblock %}
