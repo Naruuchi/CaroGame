@@ -20,9 +20,7 @@
 
     function choose(event)
     {
-        const atag = event.target;
-        console.log(atag)
-        console.log(1)
+        const atag = event.classList.add('o');
         
     }
 </script>
@@ -37,7 +35,15 @@
         <tr>
             {% for j in range(0,size) %}
             <td>
-                <a onlick="choose(this)" class="button" style="background-image: url({{x}});"  href="draw/{{i}}{{j}}"></a>
+                {% if matrix[i][j] == 0 %} 
+                    <a onlick="choose(this)" class="button" href="draw/{{size}}.{{i}}.{{j}}"></a>
+                {% endif %}
+                {% if matrix[i][j] == -1 %} 
+                    <a onlick="choose(this)" class="button" style="background-image: url({{x}});" href=""></a>
+                {% endif %}
+                {% if matrix[i][j] == 1 %} 
+                    <a onlick="choose(this)" class="button" style="background-image: url({{o}});" href=""></a>
+                {% endif %}
             </td>
             {% endfor %}
         </tr>

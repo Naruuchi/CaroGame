@@ -19,6 +19,10 @@ td {
     border: 1px black solid;
 }
 
+.o 
+{
+    background-color:red;
+}
 
 .button {
     background-repeat: no-repeat;
