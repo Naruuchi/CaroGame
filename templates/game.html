@@ -18,10 +18,18 @@
         }
     }
 
-    function choose(event)
-    {
+    function choose(event) {
         const atag = event.classList.add('o');
-        
+
+    }
+
+    function popUp()
+    {
+        let winner = "{{winner}}"
+        if (winner != "No")
+        {
+
+        }
     }
 </script>
 {% endblock %}
@@ -29,27 +37,38 @@
 {% block body %}
 
 <body onload="resize();">
-    <h1>CARO Game With AI</h1>
-    <table class="center">
-        {% for i in range(0,size) %}
-        <tr>
-            {% for j in range(0,size) %}
-            <td>
-                {% if matrix[i][j] == 0 %} 
+    <div class="container">
+        <div class="popup">
+            <img src="" alt="">
+            <h2 >{{winner}} Won The Game</h2>
+            <button class="button"> Close </button>
+        </div>
+
+        <div style="margin-left: 125px;">
+            <h1 >CARO Game With AI</h1>
+            <a href="" class="button">New game</a>
+        </div>
+        <table class="center">
+            {% for i in range(0,size) %}
+            <tr>
+                {% for j in range(0,size) %}
+                <td>
+                    {% if matrix[i][j] == 0 and winner == "No" %}
                     <a onlick="choose(this)" class="button" href="draw/{{size}}.{{i}}.{{j}}"></a>
-                {% endif %}
-                {% if matrix[i][j] == -1 %} 
-                    <a onlick="choose(this)" class="button" style="background-image: url({{x}});" href=""></a>
-                {% endif %}
-                {% if matrix[i][j] == 1 %} 
-                    <a onlick="choose(this)" class="button" style="background-image: url({{o}});" href=""></a>
-                {% endif %}
-            </td>
+                    {% elif matrix[i][j] == -1 %}
+                    <a onlick="choose(this)" class="button" style="background-image: url({{x}});" href="#"></a>
+                    {% elif matrix[i][j] == 1 %}
+                    <a onlick="choose(this)" class="button" style="background-image: url({{o}});" href="#"></a>
+                    {% else %}
+                    <a onlick="choose(this)" class="button" href="#"></a>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+        </table>
 
 
+    </div>
 </body>
 {% endblock %}

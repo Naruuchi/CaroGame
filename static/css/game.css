@@ -1,11 +1,8 @@
-body {
-    text-align: center;
-    padding-bottom: 15px;
-}
 
 .center {
     margin-left: auto;
     margin-right: auto;
+    background-color: whitesmoke;
 }
 
 table {
@@ -36,4 +33,26 @@ td {
     display: flex;
     font-size: 20px;
     cursor: pointer;
+}
+
+.popup
+{
+    width: 400px;
+    background: rgb(3, 177, 204);
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #000;
+}
+
+.popup h2
+{
+    color: red;
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
 }

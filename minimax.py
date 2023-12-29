@@ -4,16 +4,27 @@ scores = {
     0 : 0
 }
 def checkWinner(gametable, n): 
-    score = [0 for i in range (0, 6)]
+    score = [0 for i in range (0, 8)]
 
     zero = False
     for i in range (0, n):
-        if zero:
-            break
+        row = 0
+        col = 0
         for j in range (0, n):
+            if i < n - 1 and j < n - 1:
+                if gametable[i][j] != 0 and gametable[i][j + 1] == gametable[i][j]:
+                    row += 1
+                    if row == n - 1:
+                        return gametable[i][j]
+
+                if gametable[j][i] != 0 and gametable[j + 1][i] == gametable[j][i]:
+                    col+= 1
+                    if col == n - 1:
+                        return gametable[j][i]
+
             if gametable[i][j] == 0:
                 zero = True
-                break
+                
 
     for i in range (0, n - 1):
         #wrong
@@ -46,6 +57,8 @@ def checkWinner(gametable, n):
             score[5]+= 1
             if score[5] == n - 1:
                 return  gametable[i][n - i - 1]
+    
+    
     if zero == False:
         return 0
     return 2
@@ -62,7 +75,8 @@ def nextBestMove(gametable, n):
                 if bestScore < score:
                     bestScore = score
                     bestMove = [i,j]
-    gametable[bestMove[0]][bestMove[1]] = 1
+    if (gametable[bestMove[0]][bestMove[1]] == 0):
+        gametable[bestMove[0]][bestMove[1]] = 1
     return gametable
         
 def minimax(gametable, n, depth, isMax):
@@ -92,3 +106,8 @@ def minimax(gametable, n, depth, isMax):
                     bestScore = min(bestScore, score)
 
         return bestScore
+
+gametable = [[0,-1,0,0],
+             [1,-1,1,0],
+             [0,-1,0,0],
+             [0,-1,0,0]]
