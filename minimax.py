@@ -82,8 +82,13 @@ def nextBestMove(gametable, n):
 def minimax(gametable, n, depth, isMax):
     result = checkWinner(gametable, n)
     if result != 2:
-        return scores[result]
-    
+        if result == 1:
+            return scores[result] - depth
+        elif result == - 1:
+            return scores[result] + depth
+        else:
+            return scores[result]
+
     if isMax == True:
         bestScore = -999999
         for i in range (0, n):
@@ -107,7 +112,3 @@ def minimax(gametable, n, depth, isMax):
 
         return bestScore
 
-gametable = [[0,-1,0,0],
-             [1,-1,1,0],
-             [0,-1,0,0],
-             [0,-1,0,0]]

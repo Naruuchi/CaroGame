@@ -28,25 +28,31 @@
         let winner = "{{winner}}"
         if (winner != "No")
         {
-
+            let popup = document.getElementById("popup");
+            popup.classList.add("openPopup");
         }
+    }
+
+    function closePopup()
+    {
+        let popup = document.getElementById("popup");
+        popup.classList.remove("openPopup");
     }
 </script>
 {% endblock %}
 
 {% block body %}
 
-<body onload="resize();">
+<body onload="resize(); popUp();">
     <div class="container">
-        <div class="popup">
-            <img src="" alt="">
-            <h2 >{{winner}} Won The Game</h2>
-            <button class="button"> Close </button>
+        <div class="popup" id="popup">
+            <h2>{{winner}}</h2>
+            <button class="btn" onclick="closePopup()"> Close </button>
         </div>
 
         <div style="margin-left: 125px;">
             <h1 >CARO Game With AI</h1>
-            <a href="" class="button">New game</a>
+            <a href="/resize/{{size}}" class="button">New game</a>
         </div>
         <table class="center">
             {% for i in range(0,size) %}

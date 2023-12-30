@@ -19,8 +19,8 @@ def resize(n):
 @app.route('/size/<int:size>')
 def game(size):
     result = {
-        1 : "AI",
-        -1 : "You",
+        1 : "AI Win",
+        -1 : "You Win",
         0 : "Tie",
         2 : "No"
     }
