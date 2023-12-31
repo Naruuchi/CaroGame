@@ -27,8 +27,7 @@ def game(size):
     x = url_for('static', filename='imgs/x.png')
     o = url_for('static', filename='imgs/o.png')
     winner = result[checkWinner(gametable, size)]
-    print(winner)
-
+    
     return render_template('game.html', size=size, matrix = gametable, x = x, o = o, winner = winner)
 
 @app.route('/size/draw/<string:id>')

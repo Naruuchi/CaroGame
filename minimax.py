@@ -1,7 +1,10 @@
 scores = {
     1 : 10,
     -1 : -10,
-    0 : 0
+    0 : 0,
+    "Middle" : 3,
+    "Corner" : 0,
+    "Normal" : 1
 }
 def checkWinner(gametable, n): 
     score = [0 for i in range (0, 8)]
@@ -66,11 +69,13 @@ def checkWinner(gametable, n):
 def nextBestMove(gametable, n):
     bestScore = -999999
     bestMove = [0,0]
+    alpha = -999999
+    beta = 999999
     for i in range (0, n):
         for j in range (0, n):
             if gametable[i][j] == 0:
                 gametable[i][j] = 1
-                score = minimax(gametable, n, 0, False)
+                score = minimax(gametable, n, 0, False, alpha, beta, i, j)
                 gametable[i][j] = 0
                 if bestScore < score:
                     bestScore = score
@@ -79,7 +84,7 @@ def nextBestMove(gametable, n):
         gametable[bestMove[0]][bestMove[1]] = 1
     return gametable
         
-def minimax(gametable, n, depth, isMax):
+def minimax(gametable, n, depth, isMax, alpha, beta, row, col):
     result = checkWinner(gametable, n)
     if result != 2:
         if result == 1:
@@ -89,26 +94,36 @@ def minimax(gametable, n, depth, isMax):
         else:
             return scores[result]
 
+    if depth == 6:
+        if row == n/2 or col == n/2:
+            return scores["Middle"]
+        elif (row == 0 or  row == n - 1) or (col == 0 or col == n - 1): 
+            return scores["Corner"]
+        return scores["Normal"]
+
     if isMax == True:
-        bestScore = -999999
         for i in range (0, n):
             for j in range (0, n):
+
                 if gametable[i][j] == 0:
                     gametable[i][j] = 1
-                    score = minimax(gametable, n, depth + 1, False)
+                    score = minimax(gametable, n, depth + 1, False, alpha, beta, i, j)
                     gametable[i][j] = 0
-                    bestScore = max(score, bestScore)
+                    alpha = max(score, alpha)
+                    if alpha >= beta:
+                        return alpha
         
-        return bestScore
+        return alpha
     else:
-        bestScore = 999999
         for i in range (0, n):
             for j in range (0, n):
                 if gametable[i][j] == 0:
                     gametable[i][j] = -1
-                    score = minimax(gametable, n, depth + 1, True)
+                    score = minimax(gametable, n, depth + 1, True, alpha, beta, i, j)
                     gametable[i][j] = 0
-                    bestScore = min(bestScore, score)
+                    beta = min(beta, score)
+                    if beta <= alpha:
+                        return beta
 
-        return bestScore
+        return beta
 
