@@ -8,10 +8,10 @@
         prevent the AI to win the game.
 
         - For anyone to use this code I have every you need inside this project, after pulling this code down 
-         you just need to run the virtual environment by type "env/Scripts/activate" and then run the app file
-         with python3 by simply type "python3 app.py"
+         you just need to run the virtual environment by type envScriptsactivate and then run the app file
+         with python3 by simply type python3 app.py
 
-                **About the Project
+                About the Project
 
         - This project was written by Me using Flask for Back-End and html, css, js for Front-End.
 
