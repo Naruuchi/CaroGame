@@ -7,9 +7,10 @@
         the board game will be display as X and AI with O, Your jobs is to WIN the game or get a Tie from
         prevent the AI to win the game.
 
-        - For anyone to use this code I have every you need inside this project, after pulling this code down 
-         you just need to run the virtual environment by type envScriptsactivate and then run the app file
-         with python3 by simply type python3 app.py
+        - For anyone to use this code I have every you need inside this project, after pulling this code 
+	down you just need to install the virtual environment by type 'pip3 install virtualenv' and then 
+ 	virtualenv env use 'envScriptsactivate' and install 'pip3 install flask' run the app file with 
+  	python3 by simply type python3 app.py
 
                 About the Project
 
